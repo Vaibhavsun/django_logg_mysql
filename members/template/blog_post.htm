@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if form  and not doc and not pat %}
+    <form method="post" autocomplete="off" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit"> Sumbit </button>
+    </form> 
+    {% endif %}
+    {% if doc %}
+    <ul>
+    {% if obj|length == 0 %}
+        No Blog 
+    {% endif %} 
+    {% for rows in obj %}
+    <li>
+        <p><B>Title</B> {{rows.title}}</p> 
+        <p><B>Draft</B> {{rows.draft}}</p>
+        <p><b>Summary</b> {{rows.summary|truncatewords:15}}</p>
+        <p><b> Category</b> {{rows.category}}</p>
+    </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if pat %} 
+       <h2> Mental Health</h2>
+       {% if mh|length == 0 %}
+             No Blog
+        {% endif %} 
+        {% for r in mh %}
+        <li>
+            <p><b> Title</b> {{r.title}}</p>
+            <img src="{{r.image.url}}" width="100" height="100">
+            <p><b>Summary</b>{% if r.summary|length <= 15 %}
+                {{r.summary}}
+                {% else %}
+                {{ r.summary|truncatewords:15 }}...
+                {% endif %}
+            </p>
+        </li>
+        {% endfor %}
+        <h2>Heart Disease</h2>
+        {% if hd|length == 0 %}
+            No Blog
+        {% endif %} 
+        {% for r in  hd %}
+        <li>
+            <p><b> Title</b> {{r.title}}</p>
+            <img src="{{r.image.url}}" width="100" height="100">
+            <p><b>Summary</b>{% if r.summary|length <= 15 %}
+                {{r.summary}}
+                {% else %}
+                {{r.summary|truncatewords:15}}
+                {% endif %}
+            </p>
+        </li>
+        {% endfor %}
+        <h2>Covid19</h2>
+        {% if cd|length == 0 %}
+        No Blog
+        {% endif %} 
+        {% for r in cd %}
+        <li>
+            <p><b> Title</b> {{r.title}}</p>
+            <img src="{{r.image.url}}" width="100" height="100">
+            <p><b>Summary</b>{% if r.summary|length <= 15 %}
+                {{r.summary}}
+                {% else %}
+                {{r.summary|truncatewords:15}}...
+                {% endif %}
+            </p>
+        </li>
+        {% endfor %}
+        <h2>Immunization</h2>
+        {% if im|length == 0 %}
+            No Blog
+        {% endif %} 
+        {% for r in im %}
+        <li>
+            <p><b> Title</b> {{r.title}}</p>
+            <img src="{{r.image.url}}" width="100" height="100">
+            <p><b>Summary</b>{% if r.summary|length <= 15 %}
+                {{r.summary}}
+                {% else %}
+                {{r.summary|truncatewords:15}}...
+                {% endif %}
+            </p>
+        </li>
+        {% endfor %}
+
+    {% endif %}
+    
+</body>
+</html>
