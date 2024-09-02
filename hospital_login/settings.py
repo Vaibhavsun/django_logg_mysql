@@ -15,7 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-print(BASE_DIR)
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-r(%e5i%324za%$%8)a21(7sm53yl&omh7ez_yedn0wt)$hk=v-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".vercel.app",".now.sh","127.0.0.1"]
+ALLOWED_HOSTS = [".vercel.app",".now.sh"]
 
 
 # Application definition
@@ -58,7 +58,7 @@ MEDIA_URL='/media/'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:\\Users\\hp\\Desktop\\Projects\\signup and login using django\\hospital_login\\members\\template'],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,8 +79,8 @@ WSGI_APPLICATION = 'hospital_login.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',  # The database engine to use
-        'NAME': BASE_DIR / 'db.sqlite3',         # The name of the database file
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
