@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            color:red;
+            list-style-type: none;
+        }
+    </style>
+    <script type="text/javascript" >
+        console.log("hello")
+        document.getElementById("log").setAttribute("href",window.location.href+"login")
+    </script>
+</head>
+<body>
+    {% if not form and not login %}
+    <a href="/patients"><button> Patient </button></a>
+    <a href="/doctors"><button> Doctor </button></a>
+    {% endif %}
+    <form  method="post" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        {% if form %}
+        <button type="submit"> Sumbit </button>
+    </form>
+    <a id = "log" href="{{url}}login"><button>Login</button> </a>
+    {% endif %}
+
+    {% if login %}
+    <form method="POST">
+    {{login.as_p}}
+    <button type="sumbit">Sumbit</button>
+    </form>
+    <a href="{{url}}"><button> Sign up</button></a>
+    
+    {% endif %}
+    
+
+</body>
+</html>
