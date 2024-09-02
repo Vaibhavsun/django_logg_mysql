@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        li{
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome {{obj.user}} {{obj.username}}</h2>
+    <img src="{{obj.profile_pit.url}}">
+    <ul>
+        <li> First Name -{{obj.first_name}}</li>
+        <li> Last Name -{{obj.last_name}}</li>
+        <li> User Name -{{obj.username}}</li>
+        <li> Email -{{obj.email}}</li>
+        <li> Address -{{obj.Address}}</li>
+    
+    </ul>
+    {% if doc %}
+    <a href="blog_posts"><button> Post Blog </button></a>
+    {% endif %}
+    <a href="view_posts"><button> View Blog </button></a>
+    
+    
+    
+</body>
+</html>
